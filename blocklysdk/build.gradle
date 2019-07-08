@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+task copyBlocklyFiles(type: Copy) {
+    from('../blockly-js/Blockly') {
+        include 'blockly_compressed.js','python_compressed.js', 'blocks_compressed.js', 'msg/js/**', 'media/**', 'webview.html', 'toolbox_standard.js'
+    }
+    into project(':blocklysdk').file('./src/main/assets/blockly')
+}
+
+project.afterEvaluate {
+    preBuild.dependsOn(copyBlocklyFiles)
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- HTML file to host Blockly in a mobile WebView. -->
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Auto generated from source -->
+    <script src="blockly_compressed.js"></script>
+    <script src="blocks_compressed.js"></script>
+    <!-- For real time generation -->
+    <script src="python_compressed.js"></script>
+    <script src="filesaver.js"></script>
+    <!--link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet"-->
+    <!-- TODO: Select msg file based on locale. -->
+    <script src="msg/js/en.js"></script>
+    <link href="prism.css" rel="stylesheet" />
+
+    <style type="text/css">
+        html,
+        body,
+        #blocklyDiv {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @font-face {
+            font-family: Jura;
+            src: url('./media/Jura-Medium.ttf');
+        }
+
+        .blocklyDiv2 {
+            height: 50%;
+            width: 100%;
+        }
+
+        .code {
+            height: 50%;
+            width: 100%;
+            background-color: #272822;
+            margin-top: -8px
+        }
+
+        /* Style the tab */
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons that are used to open the tab content */
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+        /* Change background color of buttons on hover */
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+
+        .tabcontent {
+            display: none;
+            border-top: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="prism.js"></script>
+    <div class="blocklyDiv2">
+        <div id="blocklyDiv"></div>
+    </div>
+    <div id="code" class="code">
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks" onclick="previewCode(event, 'Python')">Python</button>
+            <button class="tablinks" onclick="previewCode(event, 'XML')">XML</button>
+            <button class="tablinks" onclick="openfile()">Open</button>
+            <button class="tablinks" onclick="downloadBlockly()">Save</button>
+            <button class="tablinks" onclick="closeToolbox()">Close Toolbox</button>
+            <button class="tablinks" onclick="restoreZoom()">Restore Zoom</button>
+            <button class="tablinks" onclick="redraw()">Redraw everything</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="Python" class="tabcontent">
+            <pre><code id="code_python" class="language-python">...</code></pre>
+        </div>
+
+        <div id="XML" class="tabcontent">
+            <pre><code id="code_xml" class="language-xml">...</code></pre>
+        </div>
+    </div>
+    <xml id="toolbox">
+        <category name="motors" colour="#e60312">
+            <block type="block_drive"></block>
+            <block type="block_motor"></block>
+            <block type="spin_motor"></block>
+            <block type="block_stop_motor"></block>
+            <block type="block_stop_all_motors"></block>
+        </category>
+        <category name="sensors" colour="#f8bc08">
+            <block type="block_ultrasonic_sensor"></block>
+            <block type="block_bumper"></block>
+            <block type="play_tune"></block>
+            <block type="colour_picker"></block>
+            <block type="colour_rgb2"></block>
+            <block type="block_set_led"></block>
+            <block type="block_set_multiple_led"></block>
+        </category>
+        <category name="loops" colour="#dd7d3a">
+            <block type="controls_repeat_ext2"></block>
+            <block type="block_repeat_forever"></block>
+            <block type="block_repeat_while"></block>
+            <block type="block_repeat_until"></block>
+            <block type="block_break"></block>
+            <block type="block_terminate_program"></block>
+            <block type="block_terminate_all"></block>
+        </category>
+        <category name="logic" colour="#0264ff">
+            <block type="logic_boolean"></block>
+            <block type="logic_compare2"></block>
+            <block type="if_then"></block>
+            <block type="if_then_else"></block>
+            <block type="logic_and"></block>
+            <block type="logic_or"></block>
+            <block type="logic_not"></block>
+        </category>
+        <category name="math" colour="#4dc88f">
+            <block type="math_number"></block>
+            <block type="math_arithmetic2"></block>
+            <block type="math_round2"></block>
+            <block type="math_trig2"></block>
+            <block type="math_random_int2"></block>
+        </category>
+        <category name="time" colour="#868a8c">
+            <block type="block_wait"></block>
+            <block type="block_global_timer"></block>
+        </category>
+        <category name="variables" colour="#cc7be6" custom="VARIABLE"></category>
+        <category name="functions" colour="#6ab3c1" custom="PROCEDURE"></category>
+    </xml>
+    <script>
+        function redraw() {
+            var workspace = Blockly.mainWorkspace;
+
+            var childBlock = workspace.newBlock('text');
+
+            childBlock.setFieldValue('Loading...', 'TEXT');
+
+            childBlock.initSvg();
+            childBlock.render();
+            setTimeout(() => {
+                workspace.clear();
+            }, 500);
+        }
+
+        function restoreZoom() {
+            Blockly.mainWorkspace.setScale(1);
+        }
+
+        function closeToolbox() {
+            Blockly.mainWorkspace.toolbox_.flyout_.hide();
+            restoreCategories();
+        }
+
+        window.addEventListener('load', (event) => {
+            redraw();
+        });
+
+        function restoreCategories() {
+            var elements = document.getElementsByClassName('blocklyTreeRow blocklyTreeSelected');
+
+            [].forEach.call(elements, function (el) {
+                el.classList.remove("blocklyTreeSelected");
+                el.style.removeProperty("background-color");
+            });
+        }
+
+        function getAsText(readFile) {
+            var reader;
+            try {
+                reader = new FileReader();
+            } catch (e) {
+                document.getElementById('output').innerHTML =
+                    "Error: seems File API is not supported on your browser";
+                return;
+            }
+
+            reader.readAsText(readFile, "UTF-8");
+            reader.onload = loaded;
+        }
+
+        function loaded(evt) {
+            var fileString = evt.target.result;
+            var xml = Blockly.Xml.textToDom(fileString);
+            Blockly.mainWorkspace.clear();
+            Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+        }
+
+        function openfile() {
+            var input = document.createElement('input');
+            input.type = 'file';
+
+            input.onchange = e => {
+                var file = e.target.files[0];
+                getAsText(file);
+            }
+
+            input.click();
+        }
+
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        function downloadBlockly() {
+            var xml = Blockly.Xml.workspaceToDom(this.workspace);
+            var xml_text = Blockly.Xml.domToText(xml);
+
+            download("blockly.xml", xml_text);
+        }
+
+        function previewCode(evt, tabName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            document.getElementsByClassName('tablinks')[0].click();
+        });
+
+        setTimeout(() => {
+            Blockly.svgResize(Blockly.mainWorkspace);
+        }, 400);
+
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox: document.getElementById('toolbox'),
+            zoom: {
+                controls: true,
+                wheel: true
+            }
+        });
+
+        workspace.addChangeListener(changeEvent => {
+            //  console.log(changeEvent);
+            var pythonCodeElement = document.getElementById("code_python");
+
+            var pythonCode = Blockly.Python.workspaceToCode(workspace);
+            pythonCodeElement.innerText = pythonCode;
+
+            var xml = Blockly.Xml.workspaceToDom(workspace);
+            var xml_text = Blockly.Xml.domToPrettyText(xml);
+
+            var xmlCodeElement = document.getElementById("code_xml");
+            xmlCodeElement.innerText = xml_text;
+
+            let pythonHighlight = document.getElementsByTagName("code")[0];
+            let xmlHighlight = document.getElementsByTagName("code")[1];
+            pythonHighlight.innerHTML = pythonHighlight.innerHTML.replace(/[<]br[/]?[>]/gi, "\n");
+            xmlHighlight.innerHTML = xmlHighlight.innerHTML.replace(/[<]br[/]?[>]/gi, "\n");
+
+            Prism.highlightElement(pythonHighlight);
+            Prism.highlightElement(xmlHighlight);
+        });
+        var lab1 = document.getElementById(':1.label');
+        var lab2 = document.getElementById(':2.label');
+        var lab3 = document.getElementById(':3.label');
+        var lab4 = document.getElementById(':4.label');
+        var lab5 = document.getElementById(':5.label');
+        var lab6 = document.getElementById(':6.label');
+        var lab7 = document.getElementById(':7.label');
+        var lab8 = document.getElementById(':8.label');
+        lab1.classList.add('motorIcon');
+        lab2.classList.add('sensorIcon');
+        lab3.classList.add('loopsIcon');
+        lab4.classList.add('logicIcon');
+        lab5.classList.add('mathIcon');
+        lab6.classList.add('timeIcon');
+        lab7.classList.add('variablesIcon');
+        lab8.classList.add('functionsIcon');
+    </script>
+</body>
+
+</html>
