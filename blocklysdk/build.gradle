@@ -33,7 +33,7 @@ dependencies {
 }
 
 task copyBlocklyFiles(type: Copy) {
-    from('../blockly-js/Blockly') {
+    from('../blocklyjs/Blockly') {
         include 'blockly_compressed.js','python_compressed.js', 'blocks_compressed.js', 'msg/js/**', 'media/**', 'webview.html', 'toolbox_standard.js'
     }
     into project(':blocklysdk').file('./src/main/assets/blockly')
