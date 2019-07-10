@@ -103,3 +103,10 @@ Show the block options dialog for the user, where the user can add a comment to 
 - `showVariableOptionsDialog`
 Show the variable options modal for the user, where the user can switch the variable to another one, or delete a variable.
 
+## Author
+
+Szabolcs Nagy szabolcs.nagy@supercharge.io
+
+## License
+
+RevolutionRoboticsBlockly is available under the MIT license. See the LICENSE file for more info.
