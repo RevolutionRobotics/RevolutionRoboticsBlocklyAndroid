@@ -25,7 +25,7 @@ repositories {
 compile 'TODO'
 ```
 
-## `BlocklyView`
+## BlocklyView
 
 The core of the Robotics Blockly Android SDK is the `BlocklyView` view class, which encapsulates all the features of the blockly editor. Add this view to your layout to embed the code editor.
 
@@ -46,7 +46,7 @@ The core of the Robotics Blockly Android SDK is the `BlocklyView` view class, wh
 To use `BlocklyView`, simply add it to your layout and initialize it by calling its `init` method, supplying a `DialogFactory` instance (see below).
 
 
-##`DialogFactory`
+## DialogFactory
 
 Many Blockly features, mostly blocks, require input from the user. Communications are done through dialogs, and all dialogs come with an implementation of the `BlocklyResult` abstact class. The dialogs provide the UI, while responses are handled by the `BlocklyResult` implementations. For example, when creating a variable, Blockly raises a text input dialog, so the user can provide its name, and the provided name is passed back to the editor using the `VariableResult` instance, which is a direct subclass of `BlocklyResult`.
 
