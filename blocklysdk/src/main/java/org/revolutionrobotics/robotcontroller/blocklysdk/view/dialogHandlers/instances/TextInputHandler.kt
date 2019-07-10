@@ -14,7 +14,8 @@ class TextInputHandler : JsPromptHandler {
         message.endsWith(".name_input") ||
                 message == "variable" ||
                 message == "procedures_mutatorarg.name" ||
-                message == "procedures_defreturn.name"
+                message == "procedures_defreturn.name" ||
+                message == "procedures_defnoreturn.name"
 
     override fun handleRequest(request: JSONObject, dialogFactory: DialogFactory, result: JsPromptResult) {
         dialogFactory.showTextInput(request.title(), request.defaultInput(), TextResult(result))
