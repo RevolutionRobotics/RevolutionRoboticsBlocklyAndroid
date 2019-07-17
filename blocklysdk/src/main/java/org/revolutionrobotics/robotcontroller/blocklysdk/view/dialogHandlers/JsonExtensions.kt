@@ -22,6 +22,8 @@ fun JSONObject.maxValue() =
 fun JSONObject.title(): String =
     optString("title", "")
 
+fun JSONObject.subtitle(): String? = optString("subtitle", null)
+
 fun JSONObject.comment(): String =
     optString("comment", "")
 
