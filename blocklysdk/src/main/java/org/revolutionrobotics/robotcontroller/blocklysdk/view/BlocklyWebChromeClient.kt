@@ -9,6 +9,7 @@ import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.ins
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.instances.ColorPickerHandler
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.instances.DialpadHandler
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.instances.DirectionHandler
+import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.instances.MotorOptionSelectorHandler
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.instances.MultiDonutSelectorHandler
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.instances.OptionSelectorHandler
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.instances.SingleDonutSelectorHandler
@@ -29,6 +30,7 @@ class BlocklyWebChromeClient(
 
     private val promptHandlers = listOf(
         DirectionHandler(),
+        MotorOptionSelectorHandler(),
         OptionSelectorHandler(),
         SoundPickerHandler(),
         ColorPickerHandler(),

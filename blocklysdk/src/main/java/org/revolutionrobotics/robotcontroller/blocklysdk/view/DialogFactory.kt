@@ -30,6 +30,7 @@ interface DialogFactory {
 
     fun showOptionSelector(
         title: String,
+        showLabels: Boolean,
         blocklyOptions: List<BlocklyOption>,
         defaultValue: BlocklyOption?,
         result: OptionResult
