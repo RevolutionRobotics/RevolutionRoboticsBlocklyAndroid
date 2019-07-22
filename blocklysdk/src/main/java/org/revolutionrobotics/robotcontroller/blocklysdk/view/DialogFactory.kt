@@ -25,11 +25,12 @@ interface DialogFactory {
     fun showColorPicker(title: String, colors: List<String>, defaultValue: String, result: ColorResult)
     fun showSoundPicker(title: String, defaultValue: String?, result: SoundResult)
     fun showBlockOptionsDialog(title: String, comment: String, result: BlockOptionResult)
-    fun showTextInput(title: String, defaultValue: String?, result: TextResult)
+    fun showTextInput(title: String, subtitle: String?, defaultValue: String?, result: TextResult)
     fun showDonutSelector(defaultValue: String, isMultiSelection: Boolean, result: DonutResult)
 
     fun showOptionSelector(
         title: String,
+        showLabels: Boolean,
         blocklyOptions: List<BlocklyOption>,
         defaultValue: BlocklyOption?,
         result: OptionResult

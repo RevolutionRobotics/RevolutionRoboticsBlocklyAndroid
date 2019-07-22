@@ -9,17 +9,16 @@ import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.opt
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.dialogHandlers.title
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.result.OptionResult
 
-class OptionSelectorHandler : JsPromptHandler {
+class MotorOptionSelectorHandler : JsPromptHandler {
 
     override fun canHandleRequest(message: String) =
-        message.endsWith("_selector") ||
-                message.endsWith("logic_boolean.bool") ||
-                message.endsWith("logic_compare.op")
+        message == "block_motor.direction_selector" ||
+                message == "spin_motor.direction_selector"
 
     override fun handleRequest(request: JSONObject, dialogFactory: DialogFactory, result: JsPromptResult) {
         dialogFactory.showOptionSelector(
             request.title(),
-            true,
+            false,
             request.options(),
             request.defaultOption(),
             OptionResult(result)
