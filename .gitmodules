@@ -1,3 +1,3 @@
 [submodule "blocklyjs"]
 	path = blocklyjs
-	url=git@github.com:RevolutionRobotics/RevolutionRoboticsBlocklyDistribution.git
+url=https://github.com/RevolutionRobotics/RevolutionRoboticsBlocklyDistribution.git
