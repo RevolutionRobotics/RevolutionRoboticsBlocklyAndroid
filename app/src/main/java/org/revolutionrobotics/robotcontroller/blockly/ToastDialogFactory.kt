@@ -8,6 +8,7 @@ import org.revolutionrobotics.robotcontroller.blocklysdk.view.DialogFactory
 import org.revolutionrobotics.robotcontroller.blocklysdk.view.result.*
 
 class ToastDialogFactory(private val context: Context) : DialogFactory {
+
     override fun showAlertDialog(message: String, result: ConfirmResult) {
         showToastMessage("Show alert: $message")
     }
@@ -47,7 +48,7 @@ class ToastDialogFactory(private val context: Context) : DialogFactory {
         result.confirmComment("Comment")
     }
 
-    override fun showTextInput(title: String, defaultValue: String?, result: TextResult) {
+    override fun showTextInput(title: String, subtitle: String?, defaultValue: String?, result: TextResult) {
         showToastMessage("Show text input! Title: $title defaultValue $defaultValue")
         result.confirm("Text")
     }
@@ -59,9 +60,11 @@ class ToastDialogFactory(private val context: Context) : DialogFactory {
 
     override fun showOptionSelector(
         title: String,
+        showLabels: Boolean,
         blocklyOptions: List<BlocklyOption>,
         defaultValue: BlocklyOption?,
         result: OptionResult
+
     ) {
         showToastMessage("Show option selector! Title: $title options: $blocklyOptions default: $defaultValue")
         result.confirm(blocklyOptions.first().key)
