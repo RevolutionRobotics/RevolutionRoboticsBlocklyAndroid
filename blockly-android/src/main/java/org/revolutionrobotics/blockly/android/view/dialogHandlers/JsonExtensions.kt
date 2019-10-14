@@ -1,8 +1,8 @@
-package org.revolutionrobotics.blockly.view.dialogHandlers
+package org.revolutionrobotics.blockly.android.view.dialogHandlers
 
 import org.json.JSONObject
-import org.revolutionrobotics.blockly.BlocklyOption
-import org.revolutionrobotics.blockly.BlocklyVariable
+import org.revolutionrobotics.blockly.android.BlocklyOption
+import org.revolutionrobotics.blockly.android.BlocklyVariable
 
 fun JSONObject.defaultKey(): String =
     optString("defaultKey", "")

@@ -1,11 +1,11 @@
-package org.revolutionrobotics.blockly.view.dialogHandlers.instances
+package org.revolutionrobotics.blockly.android.view.dialogHandlers.instances
 
 import android.webkit.JsPromptResult
 import org.json.JSONObject
-import org.revolutionrobotics.blockly.view.DialogFactory
-import org.revolutionrobotics.blockly.view.dialogHandlers.JsPromptHandler
-import org.revolutionrobotics.blockly.view.dialogHandlers.defaultKey
-import org.revolutionrobotics.blockly.view.result.DirectionResult
+import org.revolutionrobotics.blockly.android.view.DialogFactory
+import org.revolutionrobotics.blockly.android.view.dialogHandlers.JsPromptHandler
+import org.revolutionrobotics.blockly.android.view.dialogHandlers.defaultKey
+import org.revolutionrobotics.blockly.android.view.result.DirectionResult
 
 class DirectionHandler : JsPromptHandler {
 

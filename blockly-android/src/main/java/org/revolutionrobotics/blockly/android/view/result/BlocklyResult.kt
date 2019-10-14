@@ -1,4 +1,4 @@
-package org.revolutionrobotics.blockly.view.result
+package org.revolutionrobotics.blockly.android.view.result
 
 import android.webkit.JsPromptResult
 import android.webkit.JsResult

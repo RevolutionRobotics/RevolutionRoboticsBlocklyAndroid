@@ -1,13 +1,13 @@
-package org.revolutionrobotics.blockly.view.dialogHandlers.instances
+package org.revolutionrobotics.blockly.android.view.dialogHandlers.instances
 
 import android.webkit.JsPromptResult
 import org.json.JSONObject
-import org.revolutionrobotics.blockly.view.DialogFactory
-import org.revolutionrobotics.blockly.view.dialogHandlers.JsPromptHandler
-import org.revolutionrobotics.blockly.view.dialogHandlers.defaultOption
-import org.revolutionrobotics.blockly.view.dialogHandlers.options
-import org.revolutionrobotics.blockly.view.dialogHandlers.title
-import org.revolutionrobotics.blockly.view.result.OptionResult
+import org.revolutionrobotics.blockly.android.view.DialogFactory
+import org.revolutionrobotics.blockly.android.view.dialogHandlers.JsPromptHandler
+import org.revolutionrobotics.blockly.android.view.dialogHandlers.defaultOption
+import org.revolutionrobotics.blockly.android.view.dialogHandlers.options
+import org.revolutionrobotics.blockly.android.view.dialogHandlers.title
+import org.revolutionrobotics.blockly.android.view.result.OptionResult
 
 class OptionSelectorHandler : JsPromptHandler {
 
