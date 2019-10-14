@@ -25,5 +25,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
-    implementation project(path: ':blocklysdk')
+    implementation project(path: ':blockly-android')
 }

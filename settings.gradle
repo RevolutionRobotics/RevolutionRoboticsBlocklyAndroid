@@ -1,1 +1,1 @@
-include ':app', ':blocklysdk'
+include ':app', ':blockly-android'
