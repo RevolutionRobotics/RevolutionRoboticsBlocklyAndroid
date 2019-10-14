@@ -2,10 +2,10 @@ package org.revolutionrobotics.robotcontroller.blockly
 
 import android.content.Context
 import android.widget.Toast
-import org.revolutionrobotics.robotcontroller.blocklysdk.BlocklyOption
-import org.revolutionrobotics.robotcontroller.blocklysdk.BlocklyVariable
-import org.revolutionrobotics.robotcontroller.blocklysdk.view.DialogFactory
-import org.revolutionrobotics.robotcontroller.blocklysdk.view.result.*
+import org.revolutionrobotics.blockly.android.BlocklyOption
+import org.revolutionrobotics.blockly.android.BlocklyVariable
+import org.revolutionrobotics.blockly.android.view.DialogFactory
+import org.revolutionrobotics.blockly.android.view.result.*
 
 class ToastDialogFactory(private val context: Context) : DialogFactory {
 

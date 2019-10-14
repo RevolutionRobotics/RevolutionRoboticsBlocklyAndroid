@@ -2,7 +2,7 @@ package org.revolutionrobotics.robotcontroller.blockly
 
 import android.app.Activity
 import android.os.Bundle
-import org.revolutionrobotics.robotcontroller.blocklysdk.view.BlocklyView
+import org.revolutionrobotics.blockly.android.view.BlocklyView
 
 class BlocklyExampleActivity : Activity() {
 
