@@ -26,6 +26,9 @@ interface DialogFactory {
     fun showSoundPicker(title: String, defaultValue: String?, result: SoundResult)
     fun showBlockOptionsDialog(title: String, comment: String, result: BlockOptionResult)
     fun showTextInput(title: String, subtitle: String?, defaultValue: String?, result: TextResult)
+    fun showMotorSelector(title: String, subtitle: String?, defaultValue: String?, result: TextResult)
+    fun showUltrasonicSensorSelector(title: String, subtitle: String?, defaultValue: String?, result: TextResult)
+    fun showBumperSelector(title: String, subtitle: String?, defaultValue: String?, result: TextResult)
     fun showDonutSelector(defaultValue: String, isMultiSelection: Boolean, result: DonutResult)
 
     fun showOptionSelector(

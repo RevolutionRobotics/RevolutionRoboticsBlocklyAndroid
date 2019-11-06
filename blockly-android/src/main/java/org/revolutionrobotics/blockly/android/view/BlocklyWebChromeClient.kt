@@ -5,18 +5,7 @@ import android.webkit.JsResult
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import org.json.JSONObject
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.BlockOptionsHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.ColorPickerHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.DialpadHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.DirectionHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.MotorOptionSelectorHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.MultiDonutSelectorHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.OptionSelectorHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.SingleDonutSelectorHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.SliderHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.SoundPickerHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.TextInputHandler
-import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.VariableOptionsHandler
+import org.revolutionrobotics.blockly.android.view.dialogHandlers.instances.*
 import org.revolutionrobotics.blockly.android.view.result.ConfirmResult
 
 class BlocklyWebChromeClient(
@@ -38,6 +27,9 @@ class BlocklyWebChromeClient(
         MultiDonutSelectorHandler(),
         SliderHandler(),
         DialpadHandler(),
+        MotorSelectionHandler(),
+        UltrasonicSensorSelectionHandler(),
+        BumperSelectionHandler(),
         TextInputHandler(),
         BlockOptionsHandler(),
         VariableOptionsHandler()
