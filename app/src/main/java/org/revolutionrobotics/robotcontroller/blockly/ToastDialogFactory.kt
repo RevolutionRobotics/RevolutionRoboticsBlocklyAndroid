@@ -53,6 +53,21 @@ class ToastDialogFactory(private val context: Context) : DialogFactory {
         result.confirm("Text")
     }
 
+    override fun showMotorSelector(title: String, subtitle: String?, defaultValue: String?, result: TextResult) {
+        showToastMessage("Show motor selector")
+        result.confirm(defaultValue ?: "")
+    }
+
+    override fun showUltrasonicSensorSelector(title: String, subtitle: String?, defaultValue: String?, result: TextResult) {
+        showToastMessage("Show ultrasonic selector")
+        result.confirm(defaultValue ?: "")
+    }
+
+    override fun showBumperSelector(title: String, subtitle: String?, defaultValue: String?, result: TextResult) {
+        showToastMessage("Show bumper selector")
+        result.confirm(defaultValue ?: "")
+    }
+
     override fun showDonutSelector(defaultValue: String, isMultiSelection: Boolean, result: DonutResult) {
         showToastMessage("Show donut selector! Default: $defaultValue IsMulti: $isMultiSelection")
         result.confirm(1)
