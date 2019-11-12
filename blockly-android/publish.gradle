@@ -11,7 +11,7 @@ ext {
     siteUrl = 'https://github.com/RevolutionRobotics/RevolutionRoboticsBlocklyAndroid'
     gitUrl = 'https://github.com/RevolutionRobotics/RevolutionRoboticsBlocklyAndroid'
 
-    libraryVersion = '0.3.1'
+    libraryVersion = '0.3.2'
 
     developerId = 'revorobotics'
     developerName = 'Revolution Robotics Foundation'
