@@ -13,6 +13,8 @@ class BlocklyWebChromeClient(
     private val listener: BlocklyLoadedListener
 ) : WebChromeClient() {
 
+    private var blocklyLoaded = false
+
     companion object {
         private const val PROGRESS_COMPLETE = 100
     }
@@ -37,7 +39,8 @@ class BlocklyWebChromeClient(
 
     override fun onProgressChanged(view: WebView?, newProgress: Int) {
         super.onProgressChanged(view, newProgress)
-        if (newProgress == PROGRESS_COMPLETE) {
+        if (newProgress == PROGRESS_COMPLETE && !blocklyLoaded) {
+            blocklyLoaded = true
             listener.onBlocklyLoaded()
         }
     }
