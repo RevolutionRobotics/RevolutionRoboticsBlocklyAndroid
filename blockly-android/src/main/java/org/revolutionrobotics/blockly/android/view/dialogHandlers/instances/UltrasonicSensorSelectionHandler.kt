@@ -11,7 +11,9 @@ import org.revolutionrobotics.blockly.android.view.result.TextResult
 
 class UltrasonicSensorSelectionHandler  : JsPromptHandler {
 
-    override fun canHandleRequest(message: String) = message == "block_ultrasonic_sensor.name_input"
+    override fun canHandleRequest(message: String) =
+        message == "block_ultrasonic_sensor.name_input" ||
+                message == "block_is_object_near.name_input"
 
     override fun handleRequest(request: JSONObject, dialogFactory: DialogFactory, result: JsPromptResult) {
         dialogFactory.showUltrasonicSensorSelector(request.title(), request.subtitle(), request.defaultInput(),

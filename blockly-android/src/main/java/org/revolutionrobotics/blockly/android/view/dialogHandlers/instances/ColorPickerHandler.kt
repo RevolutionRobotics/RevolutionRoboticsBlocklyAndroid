@@ -11,7 +11,8 @@ import org.revolutionrobotics.blockly.android.view.result.ColorResult
 
 class ColorPickerHandler : JsPromptHandler {
 
-    override fun canHandleRequest(message: String) = message.contains("colour_picker.colour")
+    override fun canHandleRequest(message: String) = message.contains("colour_picker.colour") ||
+            message.startsWith("block_set_all_leds")
 
     override fun handleRequest(request: JSONObject, dialogFactory: DialogFactory, result: JsPromptResult) {
         dialogFactory.showColorPicker(request.title(), request.colors(), request.defaultKey(),
