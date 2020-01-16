@@ -21,30 +21,6 @@ class BlocklyExampleActivity : Activity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
-            R.id.beginner -> {
-                blocklyView?.changeToolbox("level1")
-                true
-            }
-            R.id.intermediate -> {
-                blocklyView?.changeToolbox("level2")
-                true
-            }
-            R.id.advanced -> {
-                blocklyView?.changeToolbox("level3")
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
     override fun onDestroy() {
         toastDialogFactory = null
         super.onDestroy()

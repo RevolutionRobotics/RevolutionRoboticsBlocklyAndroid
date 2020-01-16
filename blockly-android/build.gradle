@@ -36,7 +36,16 @@ dependencies {
 
 task copyBlocklyFiles(type: Copy) {
     from('../blocklyjs/Blockly') {
-        include 'blockly_compressed.js','python_compressed.js', 'blocks_compressed.js', 'msg/js/**', 'media/**', 'webview.html', 'toolbox_standard.js', 'toolbox/toolboxes.js'
+        include 'blockly_compressed.js',
+                'python_compressed.js',
+                'blocks_compressed.js',
+                'msg/js/**',
+                'media/**',
+                'webview.html',
+                'style.css',
+                'toolbox_standard.js',
+                'toolbox/toolboxes.js',
+                'toolbox/tabs.js'
     }
     into project(':blockly-android').file('./src/main/assets/blockly')
 }

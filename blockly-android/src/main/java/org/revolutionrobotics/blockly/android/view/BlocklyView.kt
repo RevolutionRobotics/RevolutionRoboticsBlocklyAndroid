@@ -61,10 +61,6 @@ class BlocklyView @JvmOverloads constructor(context: Context, attrs: AttributeSe
         loadUrl("javascript:saveProgram()")
     }
 
-    fun changeToolbox(toolboxId: String) {
-        loadUrl("javascript:changeToolBox(\"$toolboxId\")")
-    }
-
     override fun onBlocklyLoaded() {
         isBlocklyLoaded = true
         listener?.onBlocklyLoaded()
