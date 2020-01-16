@@ -70,6 +70,14 @@ class ToastDialogFactory(private val context: Context) : DialogFactory {
         showList(title, listOf("red", "green", "blue"), result)
     }
 
+    override fun showLightEffectPicker(
+        title: String,
+        defaultValue: String?,
+        result: LightEffectResult
+    ) {
+        showList(title, listOf("siren", "rainbow", "traffic"), result)
+    }
+
     override fun showSoundPicker(title: String, defaultValue: String?, result: SoundResult) {
         showList(title, listOf("siren", "ta-da", "oh-no"), result)
     }
@@ -153,6 +161,16 @@ class ToastDialogFactory(private val context: Context) : DialogFactory {
                     0 -> result.confirmForward()
                     1 -> result.confirmBackward()
                 }
+            }
+        builder.create().show()
+    }
+
+    private fun showList(title: String, items: List<String>, result: LightEffectResult) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(title)
+            .setItems(items.toTypedArray()
+            ) { dialog, which ->
+                result.confirm(items[which])
             }
         builder.create().show()
     }
