@@ -12,6 +12,7 @@ import org.revolutionrobotics.blockly.android.view.result.TextResult
 class MotorSelectionHandler : JsPromptHandler {
 
     override fun canHandleRequest(message: String) = message.contains("motor.name_input")
+            || message.contains("motor_simplified.name_input")
 
     override fun handleRequest(request: JSONObject, dialogFactory: DialogFactory, result: JsPromptResult) {
         dialogFactory.showMotorSelector(
