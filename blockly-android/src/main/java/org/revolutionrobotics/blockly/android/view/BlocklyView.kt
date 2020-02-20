@@ -53,7 +53,7 @@ class BlocklyView @JvmOverloads constructor(context: Context, attrs: AttributeSe
     }
 
     fun loadProgram(xml: String) {
-        loadUrl("javascript:loadXMLProgram(`$xml}`)")
+        loadUrl("javascript:loadXMLProgram(`$xml`)")
     }
 
     fun saveProgram(listener: SaveBlocklyListener) {
