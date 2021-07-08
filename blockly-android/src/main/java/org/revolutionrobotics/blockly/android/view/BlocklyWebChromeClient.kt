@@ -1,5 +1,6 @@
 package org.revolutionrobotics.blockly.android.view
 
+import android.util.Log
 import android.webkit.JsPromptResult
 import android.webkit.JsResult
 import android.webkit.WebChromeClient
@@ -47,6 +48,7 @@ class BlocklyWebChromeClient(
     }
 
     override fun onJsAlert(view: WebView, url: String, message: String?, result: JsResult): Boolean {
+        Log.i("NativeBridge::js::alert", message)
         message?.let { dialogFactory.showAlertDialog(it,
             ConfirmResult(result)
         ) }
@@ -54,6 +56,7 @@ class BlocklyWebChromeClient(
     }
 
     override fun onJsConfirm(view: WebView, url: String, message: String?, result: JsResult): Boolean {
+        Log.i("NativeBridge::js::confirm", message)
         message?.let { dialogFactory.showConfirmationDialog(it,
             ConfirmResult(result)
         ) }
@@ -66,8 +69,9 @@ class BlocklyWebChromeClient(
         message: String?,
         defaultValue: String?,
         result: JsPromptResult
-    ) =
-        if (message != null && message.isNotEmpty()) {
+    ): Boolean {
+        Log.i("NativeBridge::js::prompt", "message='$message', defaultValue='$defaultValue'")
+        return if (message != null && message.isNotEmpty()) {
             promptHandlers.find { it.canHandleRequest(message) }?.let { handler ->
                 handler.handleRequest(JSONObject(defaultValue), dialogFactory, result)
                 true
@@ -75,4 +79,5 @@ class BlocklyWebChromeClient(
         } else {
             super.onJsPrompt(view, url, message, defaultValue, result)
         }
+    }
 }

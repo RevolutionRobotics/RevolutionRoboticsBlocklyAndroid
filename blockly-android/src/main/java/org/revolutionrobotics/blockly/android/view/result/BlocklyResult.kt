@@ -1,5 +1,6 @@
 package org.revolutionrobotics.blockly.android.view.result
 
+import android.util.Log
 import android.webkit.JsPromptResult
 import android.webkit.JsResult
 
@@ -19,6 +20,7 @@ abstract class BlocklyResult(result: JsResult?, promptResult: JsPromptResult?) {
     }
 
     protected fun confirmResult(result: String? = null) {
+        Log.i("NativeBridge::js::result", result)
         jsResult?.confirm()
         jsPromptResult?.confirm(result)
     }
